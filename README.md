@@ -10,3 +10,24 @@ This project explores the role of Convolutional Neural Networks (CNNs) in image 
 - **Classes**: Airplane, Automobile, Bird, Cat, Deer, Dog, Frog, Horse, Ship, Truck.
 - **Split**: 50,000 Training samples, 10,000 Testing samples.
 - **Preprocessing**: Normalized pixel values to the range [0, 1].
+
+
+## Architectures
+
+### 1. Baseline Model (MLP)
+A simple feed-forward network to establish a performance floor.
+- **Input**: Flattened 32x32x3 image (3072 input features).
+- **Hidden Layers**: Two Dense layers (512 and 256 units) with ReLU activation.
+- **Output**: 10 units with Softmax activation.
+- **Parameters**: ~1.7 million (High parameter count due to dense connections).
+
+### 2. Custom CNN Model
+A standard CNN design for feature extraction.
+- **Layers**:
+    - Conv2D (32 filters, 3x3) + ReLU + MaxPool(2x2)
+    - Conv2D (64 filters, 3x3) + ReLU + MaxPool(2x2)
+    - Conv2D (64 filters, 3x3) + ReLU
+    - Flatten
+    - Dense (64) + ReLU
+    - Output (10)
+- **Parameters**: Significantly fewer than the MLP (~100k-200k), yet more effective.
